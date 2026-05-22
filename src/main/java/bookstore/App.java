@@ -69,10 +69,6 @@ public class App {
             System.out.println("2. Add Magazine");
             System.out.println("3. Add DiscMag");
             System.out.println("4. Add Ticket");
-            System.out.println("5. Add Tire");
-            System.out.println("6. Add Battery");
-            System.out.println("7. Add Cassette");
-            System.out.println("8. Add Vinyl");
             System.out.println("99. Exit");
 
             try {
@@ -91,10 +87,6 @@ public class App {
                 case 2: item = new Magazine(); break;
                 case 3: item = new DiscMag(); break;
                 case 4: item = new Ticket(); break;
-                case 5: item = new Tire(); break;
-                case 6: item = new Battery(); break;
-                case 7: item = new CassetteTape(); break;
-                case 8: item = new VinylRecord(); break;
                 default: System.out.println("Invalid selection."); continue;
             }
 
@@ -122,10 +114,6 @@ public class App {
             System.out.println("3. Magazines");
             System.out.println("4. DiscMags");
             System.out.println("5. Tickets");
-            System.out.println("6. Tire");
-            System.out.println("7. Battery");
-            System.out.println("8. Cassette");
-            System.out.println("9. Vinyl Record");
             System.out.println("99. Exit");
 
             try {
@@ -145,10 +133,6 @@ public class App {
                 case 3: filter = Magazine.class; break;
                 case 4: filter = DiscMag.class; break;
                 case 5: filter = Ticket.class; break;
-                case 6: filter = Tire.class; break;
-                case 7: filter = Battery.class; break;
-                case 8: filter = CassetteTape.class; break;
-                case 9: filter = VinylRecord.class; break;
                 default: System.out.println("Invalid selection."); continue;
             }
 
@@ -287,39 +271,6 @@ public class App {
             t.setDescription( "Concert: "+ faker.rockBand().name());;
             t.setPrice(faker.number().randomDouble(2, 50, 150));
             addItem(t);
-
-            // Tire
-            Tire tir = new Tire();
-            tir.setDiameter(faker.number().numberBetween(0, 50));
-            tir.setManufacturer(faker.company().name());
-            tir.setPrice(faker.number().randomDouble(2, 50, 150));
-            addItem(tir);
-
-            // Battery
-            Battery bat = new Battery();
-            bat.setColdCrankingAmps(faker.number().numberBetween(0, 50));
-            bat.setManufacturer(faker.company().name());
-            bat.setPrice(faker.number().randomDouble(2, 50, 150));
-            addItem(bat);
-
-            // Cassette
-            CassetteTape cat = new CassetteTape();
-            cat.setArtist(faker.rockBand().name());
-            cat.setTitle(faker.music().instrument());
-            cat.setHasAutoReverse(faker.bool().bool());
-            cat.setDateOfRelease(faker.date().birthday());
-            cat.setPlaybackDurationMinutes(faker.number().numberBetween(0, 1000));
-            addItem(cat);
-
-            // Vinyl Records
-            VinylRecord vin = new VinylRecord();
-            vin.setArtist(faker.rockBand().name());
-            vin.setTitle(faker.music().instrument());
-            vin.setDateOfRelease(faker.date().birthday());
-            vin.setPlaybackDurationMinutes(faker.number().numberBetween(0, 1000));
-            vin.setRecordSizeInches(faker.number().numberBetween(10, 40));
-            vin.setRotationsPerMinute(faker.number().numberBetween(0, 500));
-            addItem(vin);
         }
     }
 }
