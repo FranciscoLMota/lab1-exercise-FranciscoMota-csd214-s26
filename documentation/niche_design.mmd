@@ -9,6 +9,12 @@ classDiagram
     Magazine <|-- DiscMag
 
     Product <-- CashTill
+    Product <|-- PhysicalMusicFormat
+    PhysicalMusicFormat <|-- VinylRecord
+    PhysicalMusicFormat <|-- CassetteTape
+    Product <|-- VehiclePart
+    VehiclePart <|-- Battery
+    VehiclePart <|-- Tire
 
     class SaleableItem {
         <<interface>>
@@ -103,4 +109,71 @@ classDiagram
         +showTotal()
         +sellItem(SaleableItem item)
         +getRunningTotal() double
+    }
+
+    class VehiclePart {
+        <<abstract>>
+        +String manufacturer
+        +double price
+        +VehiclePart()
+        +VehiclePart(String manufacturer, double price)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
+    }
+
+    class Tire {
+        -int diameter
+        +Tire()
+        +Tire(String manufacturer, double price, int diameter)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
+    }
+
+    class Battery {
+        -int coldCrankingAmps
+        +Battery()
+        +Battery(String manufacturer, double price, int coldCrankingAmps)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
+    }
+
+    class PhysicalMusicFormat {
+        <<abstract>>
+        +double playbackDurationMinutes
+        +String artist
+        +String title
+        +Date dateOfRelease
+        +PhysicalMusicFormat()
+        +PhysicalMusicFormat(String title, Date dateOfRelease, String artist, double playbackDurationMinutes)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
+    }
+
+    class VinylRecord {
+        -int recordSizeInches
+        -int rotationsPerMinute
+        +VinylRecord()
+        +VinylRecord(String title, Date dateOfRelease, String artist, double playbackDurationMinutes, int recordSizeInches, int rotationsPerMinute)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
+    }
+
+    class CassetteTape {
+        -boolean hasAutoReverse
+        +CassetteTape()
+        +CassetteTape(String title, Date dateOfRelease, String artist, double playbackDurationMinutes, boolean hasAutoReverse)
+        +initialize(Scanner input)
+        +edit(Scanner input)
+        +sellItem()
+        +toString() String
     }
